@@ -1,5 +1,6 @@
 <?php
 echo "<h1 align = 'center' style = 'color: darkblue'>Калькулятор</h1>";
+///echo "<link rel="stylesheet" href="form.css"/>";
 
 $errors = [];
 if (isset($_POST['firstval']))
@@ -17,13 +18,11 @@ else
 
 
 
-
-
 $form = <<<FORM
 <form action="calc.php" method="post">
     <p align = "center"><input type = "text" name = "firstval" 
     size = "10" value = "$firstval" />    
-    <input type = "text" name = "operand" size = "5" value="$operand" />  
+    <input type = "text" class = "form" name = "operand" size = "5" value="$operand" />  
     <input type = "text" name = "secondval" size = "10" value="$secondval" /></p>
     <p align = "center"> <input type = "submit" name = "Посчитать" value = "Посчитать" />
     </p>
