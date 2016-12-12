@@ -1,42 +1,23 @@
 <?php
 echo "<h1 align = 'center' style = 'color: darkblue'>Калькулятор</h1>";
-
 $errors = [];
-if (isset($_POST['firstval']) || ($_POST['secondval']) || ($_POST['operand']))
-{
+if (isset($_POST['firstval']) || ($_POST['secondval']) || ($_POST['operand'])){
     $firstval = trim($_POST['firstval']);
     $secondval = trim($_POST['secondval']);
     $operand = trim($_POST['operand']);
-    if (!preg_match('/^[\d]+(\.){0,1}[\d]*$/', $firstval))
-    {
+    if (!preg_match('/^(\-){0,1}[\d]+(\.){0,1}[\d]*$/', $firstval)){
         $errors[] = 'Error firstval value type!!!';
     }
-    elseif (!preg_match('/^^[\d]+(\.){0,1}[\d]*$/', $secondval))
-    {
+    elseif (!preg_match('/^(\-){0,1}[\d]+(\.){0,1}[\d]*$/', $secondval)){
         $errors[] = 'Error secondval value type!!!';
     }
-    elseif (!preg_match('/^[+\-\*\/]{1}$/', $operand))
-    {
+    elseif (!preg_match('/^[+\-\*\/]{1}$/', $operand)){
         $errors[] = 'Error operand value type!!!';
     }
 }
-else
-{
+else{
     $firstval = ''; $secondval = ''; $operand = '';
 }
-/*
-if (isset($_POST['operand']))
-{
-    $operand = trim($_POST['operand']);
-    if (!preg_match('/^[+\-\*\/]+$/', $operand))
-    {
-        $errors[] = 'Error operand value type!!!';
-    }
-}
-else
-{
-    $operand = '';
-}*/
 
 $form = <<<FORM
 <form action="calc.php" method="post">
@@ -49,15 +30,44 @@ $form = <<<FORM
 </form>
 FORM;
 echo $form;
-
 if (!empty($errors)) {
     foreach ($errors as $error) {
         echo "<div style = 'color: red;'>$error</div>" . "<br />";
         //echo "<div style = 'color: red;'>$_POST['firstval']</div>";
     }
 }
-
-//switch ()
+$operandarray = array('+', '-');  //можно и через массив
+switch ($operand){
+    case $operandarray[0]:
+        if (empty($errors)){
+            $rezalt = $firstval + $secondval;
+            echo "<h3 align = 'center'>Результат = $rezalt</h3>";
+            break;
+        }
+    case $operandarray[1]:
+        if (empty($errors)) {
+            $rezalt = $firstval - $secondval;
+            echo "<h3 align = 'center'>Результат = $rezalt</h3>";
+            break;
+        }
+    case '*':
+        if (empty($errors)){
+            $rezalt = $firstval * $secondval;
+            echo "<h3 align = 'center'>Результат = $rezalt</h3>";
+            break;
+        }
+    case '/':
+        if (empty($errors)){
+            if ($secondval != 0){
+                $rezalt = $firstval / $secondval;
+                echo "<h3 align = 'center'>Rezult = $rezalt</h3>";
+                break;
+            }
+            else{
+                echo 'Error secondval value type! Don\'t divide by zero!!!';
+            }
+        }
+}
 
 
 /*
