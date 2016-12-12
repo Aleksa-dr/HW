@@ -7,11 +7,11 @@ if (isset($_POST['firstval']) || ($_POST['secondval']) || ($_POST['operand']))
     $firstval = trim($_POST['firstval']);
     $secondval = trim($_POST['secondval']);
     $operand = trim($_POST['operand']);
-    if (!preg_match('/^[\d\.]+$/', $firstval))
+    if (!preg_match('/^[\d]+(\.){0,1}[\d]*$/', $firstval))
     {
         $errors[] = 'Error firstval value type!!!';
     }
-    elseif (!preg_match('/^[\d\.]+$/', $secondval))
+    elseif (!preg_match('/^^[\d]+(\.){0,1}[\d]*$/', $secondval))
     {
         $errors[] = 'Error secondval value type!!!';
     }
