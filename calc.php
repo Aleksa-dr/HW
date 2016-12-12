@@ -1,22 +1,42 @@
 <?php
 echo "<h1 align = 'center' style = 'color: darkblue'>Калькулятор</h1>";
-///echo "<link rel="stylesheet" href="form.css"/>";
 
 $errors = [];
-if (isset($_POST['firstval']))
+if (isset($_POST['firstval']) || ($_POST['secondval']) || ($_POST['operand']))
 {
-    $firstval = $_POST['firstval'];
+    $firstval = trim($_POST['firstval']);
+    $secondval = trim($_POST['secondval']);
+    $operand = trim($_POST['operand']);
     if (!preg_match('/^[\d\.]+$/', $firstval))
     {
         $errors[] = 'Error firstval value type!!!';
     }
+    elseif (!preg_match('/^[\d\.]+$/', $secondval))
+    {
+        $errors[] = 'Error secondval value type!!!';
+    }
+    elseif (!preg_match('/^[+\-\*\/]{1}$/', $operand))
+    {
+        $errors[] = 'Error operand value type!!!';
+    }
 }
 else
 {
-    $firstval = '';
+    $firstval = ''; $secondval = ''; $operand = '';
 }
-
-
+/*
+if (isset($_POST['operand']))
+{
+    $operand = trim($_POST['operand']);
+    if (!preg_match('/^[+\-\*\/]+$/', $operand))
+    {
+        $errors[] = 'Error operand value type!!!';
+    }
+}
+else
+{
+    $operand = '';
+}*/
 
 $form = <<<FORM
 <form action="calc.php" method="post">
@@ -32,14 +52,21 @@ echo $form;
 
 if (!empty($errors)) {
     foreach ($errors as $error) {
-        echo "<div style = 'color: red;'>$error</div>";
+        echo "<div style = 'color: red;'>$error</div>" . "<br />";
         //echo "<div style = 'color: red;'>$_POST['firstval']</div>";
     }
 }
-//echo "<a href='calc.php'>Back</a>";
+
+//switch ()
+
+
 /*
 1) Вывести дату своего рождения в 3х форматах;
-2) Написать калькулятор используя формы (использовать проверки 
-   для неверно заданных значений и возвращать ошибки на исправление). 
+2) Написать калькулятор используя формы (использовать проверки
+   для неверно заданных значений и возвращать ошибки на исправление).
    Интерфейс построить с использованием бутстрап библиотеки;
 3) Грамотно поместить все в гит пулреквестом;*/
+
+
+
+
