@@ -1,5 +1,13 @@
 <?php
-echo "<h1 align = 'center' style = 'color: darkblue'>Калькулятор</h1>";
+/*use BootstrapPHP\BootstrapPHP;
+include 'BootstrapPHP/BootstrapPHP.php';
+BootstrapPHP::register_autoload();
+
+use BootstrapPHP\Button;
+Button::create('Обычная кнопка', '/link/');*/
+
+
+/*echo "<h1 align = 'center' style = 'color: darkblue'>Калькулятор</h1>";
 $errors = [];
 if (isset($_POST['firstval']) || ($_POST['secondval']) || ($_POST['operand'])){
     $firstval = trim($_POST['firstval']);
@@ -33,6 +41,7 @@ echo $form;
 if (!empty($errors)) {
     foreach ($errors as $error) {
         echo "<div style = 'color: red;'>$error</div>" . "<br />";
+        //echo "<div style = 'color: red;'>$_POST['firstval']</div>";
     }
 }
 $operandarray = array('+', '-');  //можно и через массив
@@ -66,21 +75,4 @@ switch ($operand){
                 echo 'Error secondval value type! Don\'t divide by zero!!!';
             }
         }
-}
-echo "<br />" . "<a href = 'calc1.php'>Next version of calculator >>></a>";
-
-echo "<br />"."<br />"."<br />"."<br />";
-echo "<br />" . "<h4 style = 'color: darkblue'>Дата рождения создателя калькулятора: </h4>";
-echo date("j F, Y", mktime(0, 0, 0, 11, 25, 1992)) . "<br />";
-echo date("M-d-Y", mktime(0, 0, 0, 11, 25, 1992)) . "<br />";
-echo date("d.m.Y и это был l", mktime(0, 0, 0, 11, 25, 1992)) . "<br />";
-/*
-1) Вывести дату своего рождения в 3х форматах;
-2) Написать калькулятор используя формы (использовать проверки
-   для неверно заданных значений и возвращать ошибки на исправление).
-   Интерфейс построить с использованием бутстрап библиотеки;
-3) Грамотно поместить все в гит пулреквестом;*/
-
-
-
-
+}*/
