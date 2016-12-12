@@ -8,21 +8,38 @@
 <style type = "text/CSS">
     .b1 {
         background: navy; /* Синий цвет фона */
-        color: white; /* Белые буквы */
-        font-size: 9pt; /* Размер шрифта в пунктах */
+        color: white;
+        font-size: 9pt;
+    }
+    .width {
+        width: 500px;
+        height: 30px;
+    }
+    .add {
+        width: 50px;
+        height: 50px;
+        background-color: gainsboro;
+    }
+    .C {
+        width: 50px;
+        height: 50px;
+        background-color: orangered;
     }
 </style>
 
 <body>
-<form method = "post" action="calc1.php">
+<form method = "post" action = "calc1.php">
     <p align = "center">
-        <input type = "text" name = "firstval" size = "10"
-               value="<?php if (isset($_POST["firstval"])) echo $_POST["firstval"] ?>" />
-        <input type = "text" class = "form" name = "operand" size = "5"
-               value="<?php if (isset($_POST["operand"])) echo $_POST["operand"] ?>" />
-        <input type = "text" name = "secondval" size = "10"
-               value="<?php if (isset($_POST["secondval"])) echo $_POST["secondval"] ?>" /></p>
-    <p align = "center"> <input type = "submit" name = "Посчитать" value = "Посчитать" />
+        <input type = "text" name = "value" size = "20" class = "width"
+               value="<?php if (isset($_POST["value"])) echo $_POST["value"] ?>" /></p>
+    <p style = "text-indent: 230px"><label>Ans = <?php if (isset($_POST["value"]))
+        echo $_POST["value"] ?></label></p>
+    <p style = "text-indent: 400px">
+        <input type = "submit"  class = "add" name = "openbkt" value = "(" />
+        <input type = "submit"  class = "add" name = "closebkt" value = ")" />
+        <input type = "submit"  class = "add" name = "procent" value = "%" />
+        <input type = "submit"  class = "C" name = "clear" value = "C" />
+
     </p>
 </form>
 </body>
@@ -31,7 +48,7 @@
 
 <?php
 $errors = [];
-if (isset($_POST['firstval']) || ($_POST['secondval']) || ($_POST['operand'])){
+/*if (isset($_POST['firstval']) || ($_POST['secondval']) || ($_POST['operand'])){
     $firstval = trim($_POST['firstval']);
     $secondval = trim($_POST['secondval']);
     $operand = trim($_POST['operand']);
@@ -88,7 +105,7 @@ switch ($operand){
                 echo 'Error secondval value type! Don\'t divide by zero!!!';
             }
         }
-}
+}*/
 
 ?>
 
