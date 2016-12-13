@@ -7,19 +7,22 @@ if (isset($_POST['value'])){
     }
     else {
         $action = $_POST['button'];
-        $arrayvalue =  [];
+        $arrayvalue =  ['','','','','','','','','',''];
         switch ($action) {
             case 'C':
                 $value = 0;
                 break;
             case '%':
                 $value /= 100;
-                for ($i = 0; $i < count($arrayvalue); $i++){
-                    $arrayvalue = [$value];
-                }
                 break;
             case '√':
                 $value = sqrt($value);
+                break;
+            case '=':
+                $value = $value;
+                break;
+            case '+':
+                $value += $value;
                 break;
             case '7':
                 $value = 7;
@@ -29,10 +32,14 @@ if (isset($_POST['value'])){
                 break;
             case '9':
                 $value = 9;
+                for ($i = 0; $i < count($arrayvalue); $i++){
+                    $arrayvalue = [$value];
+                    $i = count($arrayvalue);
+                }
                 break;
         }
-        /*for ($i = 0; $i < count($arrayvalue); $i++){
-            echo $arrayvalue[$i];*/
+        for ($i = 0; $i < count($arrayvalue); $i++){
+            echo $arrayvalue[$i];
         }
     }
 }
