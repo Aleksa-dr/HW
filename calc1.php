@@ -7,17 +7,20 @@ if (isset($_POST['value'])){
     }
     else {
         $action = $_POST['button'];
+        $arrayvalue =  [];
         switch ($action) {
             case 'C':
                 $value = 0;
                 break;
             case '%':
                 $value /= 100;
+                for ($i = 0; $i < count($arrayvalue); $i++){
+                    $arrayvalue = [$value];
+                }
                 break;
-            /*case '/':
-                $value = $value / $_POST['value'];
-                $_POST['value'] /= 100;
-                break;*/
+            case '√':
+                $value = sqrt($value);
+                break;
             case '7':
                 $value = 7;
                 break;
@@ -27,6 +30,9 @@ if (isset($_POST['value'])){
             case '9':
                 $value = 9;
                 break;
+        }
+        /*for ($i = 0; $i < count($arrayvalue); $i++){
+            echo $arrayvalue[$i];*/
         }
     }
 }
@@ -150,7 +156,7 @@ switch ($operand){
     <p align = "center">
         <input type = "text" name = "value" size = "20" class = "width"
                value = "<?php echo $value ?>" /></p>
-    <p class="Ans"><label>Ans = <?php echo $value ?></label></p>
+    <p class="Ans"><label>Memory = <?php echo $_POST['value'] ?></label></p>
     <p align="center">
         <input type = "submit"  class = "add" name = "button" value = "7" />
         <input type = "submit"  class = "add" name = "button" value = "8" />
