@@ -1,4 +1,5 @@
 <?php
+//for new branch
 echo "<h1 align = 'center' style = 'color: darkblue'>Калькулятор</h1>";
 $errors = [];
 if (isset($_POST['firstval']) || ($_POST['secondval']) || ($_POST['operand'])){
