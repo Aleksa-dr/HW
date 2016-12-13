@@ -10,23 +10,22 @@ if (isset($_POST['value'])){
         switch ($action) {
             case 'C':
                 $value = 0;
-                //$_POST['value'] = 0;
                 break;
-            case '/':
+            case '%':
+                $value /= 100;
+                break;
+            /*case '/':
                 $value = $value / $_POST['value'];
                 $_POST['value'] /= 100;
-                break;
+                break;*/
             case '7':
                 $value = 7;
-                $_POST['value'] = 7;
                 break;
             case '8':
                 $value = 8;
-                $_POST['value'] = 8;
                 break;
             case '9':
                 $value = 9;
-                $_POST['value'] = 9;
                 break;
         }
     }
@@ -141,6 +140,9 @@ switch ($operand){
         background-color: lightsteelblue;
         font-size: larger;
     }
+    .Ans {
+        text-align: center;
+    }
 </style>
 
 <body>
@@ -148,8 +150,7 @@ switch ($operand){
     <p align = "center">
         <input type = "text" name = "value" size = "20" class = "width"
                value = "<?php echo $value ?>" /></p>
-    <p style = "text-indent: 400px"><label>Ans = <?php
-            echo $value ?></label></p>
+    <p class="Ans"><label>Ans = <?php echo $value ?></label></p>
     <p align="center">
         <input type = "submit"  class = "add" name = "button" value = "7" />
         <input type = "submit"  class = "add" name = "button" value = "8" />
@@ -169,7 +170,7 @@ switch ($operand){
         <input type = "submit"  class = "add" name = "button" value = "2" />
         <input type = "submit"  class = "add" name = "button" value = "3" />
         <input type = "submit"  class = "add" name = "button" value = "-" />
-        <input type = "submit"  class = "add" name = "button" value = "!!!" />
+        <input type = "submit"  class = "add" name = "button" value = "√" />
 
     </p>
     <p align="center">
