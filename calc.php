@@ -25,8 +25,8 @@ $form = <<<FORM
                         size = "10" value = "$firstval" />    
     <input type = "text" class = "form" name = "operand" size = "5" value="$operand" />  
     <input type = "text" name = "secondval" size = "10" value="$secondval" /></p>
-    <p align = "center"> <input type = "submit" name = "button" value = "Посчитать" />
-                         <input type = "submit" name = "button" value = "Сбросить" />
+    <p align = "center"> <input type = "submit" name = "button1" value = "Посчитать" />
+                         <input type = "submit" onclick = "calc.php" name = "button2" value = "Сбросить" />
     </p>
 </form>
 FORM;
@@ -37,52 +37,47 @@ if (!empty($errors)) {
     }
 }
 
-$action = $_POST['button'];
-switch ($action) {
-    case 'Посчитать':{
-        $operandarray = array('+', '-');  //можно и через массив
-        switch ($operand){
-            case $operandarray[0]:
-                if (empty($errors)){
-                    $rezalt = $firstval + $secondval;
+if (isset($_POST['button1'])){
+    $operandarray = array('+', '-');  //можно и через массив
+    switch ($operand){
+        case $operandarray[0]:
+            if (empty($errors)){
+                $rezalt = $firstval + $secondval;
+                echo "<h3 align = 'center'>Результат = $rezalt</h3>";
+                break;
+            }
+        case $operandarray[1]:
+            if (empty($errors)) {
+                $rezalt = $firstval - $secondval;
+                echo "<h3 align = 'center'>Результат = $rezalt</h3>";
+                break;
+            }
+        case '*':
+            if (empty($errors)){
+                $rezalt = $firstval * $secondval;
+                echo "<h3 align = 'center'>Результат = $rezalt</h3>";
+                break;
+            }
+        case '/':
+            if (empty($errors)){
+                if ($secondval != 0){
+                    $rezalt = $firstval / $secondval;
                     echo "<h3 align = 'center'>Результат = $rezalt</h3>";
                     break;
                 }
-            case $operandarray[1]:
-                if (empty($errors)) {
-                    $rezalt = $firstval - $secondval;
-                    echo "<h3 align = 'center'>Результат = $rezalt</h3>";
-                    break;
+                else{
+                    echo 'Error secondval value type! Don\'t divide by zero!!!';
                 }
-            case '*':
-                if (empty($errors)){
-                    $rezalt = $firstval * $secondval;
-                    echo "<h3 align = 'center'>Результат = $rezalt</h3>";
-                    break;
-                }
-            case '/':
-                if (empty($errors)){
-                    if ($secondval != 0){
-                        $rezalt = $firstval / $secondval;
-                        echo "<h3 align = 'center'>Rezult = $rezalt</h3>";
-                        break;
-                    }
-                    else{
-                        echo 'Error secondval value type! Don\'t divide by zero!!!';
-                    }
-                }
-        }
-        break;
-    }
-    case 'Сбросить':{
-        $rezalt = 0;
-        $_POST['firstval'] = 0;
-        $firstval = 0; $secondval = ' '; $operand = ' ';
-        echo "<h3 align = 'center'>Rezult = $rezalt</h3>";
-        break;
+            }
     }
 }
-
+if (isset($_POST['button2'])){
+    $rezalt = 0;
+    //$_POST['firstval'] = '';
+    //$firstval = 0; $secondval = ' '; $operand = ' ';
+    //echo'<META HTTP-EQUIV=button Content="0;URL=calc.php">';
+    echo "<h3 align = 'center'>Результат = $rezalt</h3>";
+}
 
 
 echo "<br />" . "<a href = 'calc1.php'>Next version of calculator >>></a>";
