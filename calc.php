@@ -1,4 +1,5 @@
 <?php
+//for new branch
 echo "<h1 align = 'center' style = 'color: darkblue'>Калькулятор</h1>";
 $errors = [];
 if (isset($_POST['firstval']) || ($_POST['secondval']) || ($_POST['operand'])){
@@ -20,13 +21,14 @@ else{
 }
 
 $form = <<<FORM
+<!DOCTYPE html>
 <form action="calc.php" method="post">
     <p align = "center"><input type = "text" name = "firstval" 
                         size = "10" value = "$firstval" />    
     <input type = "text" class = "form" name = "operand" size = "5" value="$operand" />  
     <input type = "text" name = "secondval" size = "10" value="$secondval" /></p>
     <p align = "center"> <input type = "submit" name = "button1" value = "Посчитать" />
-                         <input type = "submit" onclick = "calc.php" name = "button2" value = "Сбросить" />
+                         <input type = "reset" onclick = "calc2.php" name = "button2" value = "Сбросить" />
     </p>
 </form>
 FORM;
@@ -75,7 +77,7 @@ if (isset($_POST['button2'])){
     $rezalt = 0;
     //$_POST['firstval'] = '';
     //$firstval = 0; $secondval = ' '; $operand = ' ';
-    //echo'<META HTTP-EQUIV=button Content="0;URL=calc.php">';
+    //echo'<META HTTP-EQUIV=button Content="0;URL=calc2.php">';
     echo "<h3 align = 'center'>Результат = $rezalt</h3>";
 }
 
