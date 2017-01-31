@@ -1,6 +1,5 @@
 <?php
-//include_once 'checker.php';
-//include_once 'validLoginInformation.php';
+include_once 'checker.php';
 ?>
 <html lang="en">
 <head>
@@ -13,22 +12,33 @@
 <div class="container form-signin">
     <?php
     $msg = '';
-    $arr = array();
+    var_dump($resultArray);
+    echo "<br/>";
     if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {
-//        $arr[0] = $_POST['username'];
-//        $arr[1] = $_POST['password'];
-
-        include_once 'checker.php';
+        $string = "{$_POST['username']}"." {$_POST['password']}";
+        foreach ($resultArray as $k => $v) {
+            foreach ($v as $kay => $value){
+                if($string == $kay){
+                    echo $value;
+                    $_SESSION['user_access'] = true;
+                    $msg = '<h1>You have entered valid use name and password</h1>';
+                    header('Refresh: 5; URL = page.php');
+                }
+                else {
+                    $msg = '<h1>Wrong username or password. They have been used already</h1>';
+                }
+            }
+        }
 //    if (in_array($_POST['username'], $nameArray)
 //        && in_array(sha1($_POST['password'], true), $passwordArrayWhithSha1)) {
 //        && in_array($_POST['password'], $passwordArrayWhithSha1)) {
-        if ($result){
-            $_SESSION['user_access'] = true;
-            $msg = '<h1>You have entered valid use name and password</h1>';
-            header('Refresh: 3; URL = page.php');
-        } else {
-            $msg = '<h1>Wrong username or password. They have been used already</h1>';
-        }
+//        if ($result){
+//            $_SESSION['user_access'] = true;
+//            $msg = '<h1>You have entered valid use name and password</h1>';
+//            header('Refresh: 3; URL = page.php');
+//        } else {
+//            $msg = '<h1>Wrong username or password. They have been used already</h1>';
+//        }
     }
     ?>
 </div>
