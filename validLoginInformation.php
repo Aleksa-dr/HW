@@ -4,8 +4,10 @@ include_once 'index.php';
 include_once 'login.php';
 $msg = '';
 if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {
-    if (in_array($_POST['username'], $nameArray)
-        && in_array(sha1($_POST['password'], true), $passwordArrayWhithSha1)) {
+//    if (in_array($_POST['username'], $nameArray)
+//        && in_array(sha1($_POST['password'], true), $passwordArrayWhithSha1)) {
+//        && in_array($_POST['password'], $passwordArrayWhithSha1)) {
+    if ($result){
         $_SESSION['user_access'] = true;
         $msg = '<h1>You have entered valid use name and password</h1>';
         header('Refresh: 3; URL = page.php');
