@@ -5,19 +5,23 @@ $link = mysqli_connect('localhost', 'alex', 'password', 'users');
 if (!$link) {
     die('Ошибка соединения с базой данных: ' . mysqli_error($link));
 }
-$sqlQuery = "
+if (isset($_POST['userName']) && isset($_POST['password'])) {
+    $name = $_POST['userName'];
+    $password = $_POST['password'];
+    $sqlQuery = "
 SELECT `name_role`, `name`, `password`                                    
 FROM `role`                                          
   INNER JOIN `user` ON `role`.`id` = `user`.`id_role`
-WHERE `name` = 'Roma' AND `password` = 'password'";
+WHERE `name` = '$name' AND `password` = '$password'";
 
-$result = mysqli_query($link, $sqlQuery);
-$_SESSION['userRole'] = null;
-while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-    $_SESSION['userRole'] = $row[0];
+    $result = mysqli_query($link, $sqlQuery);
+    $_SESSION['userRole'] = null;
+    while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+        $_SESSION['userRole'] = $row[0];
+    }
+    mysqli_free_result($result);
+    mysqli_close($link);
 }
-mysqli_free_result($result);
-mysqli_close($link);
 if (isset($_SESSION['user_access']) && $_SESSION['user_access'] === true) {
     $role = $_SESSION['userRole'];
     $page = $_SERVER['PHP_SELF'];
