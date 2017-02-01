@@ -13,6 +13,7 @@ $roles = [
     'admin' => [
         'page',
         'show',
+        'car',
         'login',
         'logout',
     ]

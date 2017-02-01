@@ -12,40 +12,22 @@ include_once 'checker.php';
 <div class="container form-signin">
     <?php
     $msg = '';
-    var_dump($resultArray);
-    echo "<br/>";
-    if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {
-        $string = "{$_POST['username']}"." {$_POST['password']}";
-        foreach ($resultArray as $k => $v) {
-            foreach ($v as $kay => $value){
-                if($string == $kay){
-                    echo $value;
-                    $_SESSION['user_access'] = true;
-                    $msg = '<h1>You have entered valid use name and password</h1>';
-                    header('Refresh: 5; URL = page.php');
-                }
-                else {
-                    $msg = '<h1>Wrong username or password. They have been used already</h1>';
-                }
-            }
+    if (isset($_POST['username']) && isset($_POST['password'])) {
+        if (!empty($_SESSION['userRole'])) {
+            $_SESSION['user_access'] = true;
+            $msg = '<h2>You have entered valid use name and password.</h2>
+                    <p><h2>You are logged as </h2></p>'.$_SESSION['userRole'];
+            header('Refresh: 5; URL = page.php');
+        } else {
+            $msg = '<h1>Wrong username or password. They have been used already</h1>';
         }
-//    if (in_array($_POST['username'], $nameArray)
-//        && in_array(sha1($_POST['password'], true), $passwordArrayWhithSha1)) {
-//        && in_array($_POST['password'], $passwordArrayWhithSha1)) {
-//        if ($result){
-//            $_SESSION['user_access'] = true;
-//            $msg = '<h1>You have entered valid use name and password</h1>';
-//            header('Refresh: 3; URL = page.php');
-//        } else {
-//            $msg = '<h1>Wrong username or password. They have been used already</h1>';
-//        }
     }
     ?>
 </div>
 <div class="container">
     <form class="form-signin" role="form" action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
         <h4 class="form-signin-heading"><?= $msg; ?></h4>
-        <input type="text" class="form-control" name="username" placeholder="username = Aleksandr" required autofocus></br>
+        <input type="text" class="form-control" name="username" placeholder="username = Artur" required autofocus></br>
         <input type="password" class="form-control" name="password" placeholder="password = 12345" required>
         <p>
             <button class="btn btn-lg btn-primary btn-block" style="width:100px;height:30px" type="submit" name="login">Login</button>
