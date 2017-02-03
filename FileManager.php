@@ -14,7 +14,7 @@
 <body>
 <form method="post" action="FileManager.php">
     <p align="left">
-    <h3>Укажите путь к файлу :</h3>
+    <h3>Укажите путь к директории :</h3>
     <input type="text" name="value" class="path"
            value="<?php echo $filePath ?>"/>
     </p>
@@ -23,7 +23,7 @@
                value="Перейти к директории >>>"/>
     </p>
     <p>
-    <h3>Файлы данной директории :</h3>
+    <h3>Содержимое данной директории :</h3>
     <p>
         <select name="list" class="list">
             <?php
