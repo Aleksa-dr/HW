@@ -33,15 +33,26 @@
             } ?>"/>
         </select>
         <input type="submit" name="button" class="btnInfo"
-               value="Информация о файле"/>
+               value="Информация о файле"/><br/>
     </p>
-    <p><?php echo $nameFile ?></p>
+    <p><?php echo $nameFile ?></p><br/>
     <p><?php
         if (!empty($errors)) {
             foreach ($errors as $error) {
                 echo "<div style = 'color: red;'>$error</div>"."<br />";
             }
         }?></p>
+    <p>
+        <input type="submit" name="button" class="left"
+               value="<<<"/>
+        <?php echo  $filePath ?>
+<!--        <input type="submit" name="button" class="right"-->
+<!--               value=">>>"/>-->
+        <?php echo "<br/><br/>";
+        foreach ($fileTree as $val){
+            echo $val."<br/>";
+        }?>
+    </p>
 </form>
 </body>
 </html>
