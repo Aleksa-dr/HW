@@ -50,7 +50,8 @@
 <!--               value=">>>"/>-->
         <?php echo "<br/><br/>";
         foreach ($fileTree as $val){
-            echo $val."<br/>";
+            echo $val.' <input type="submit" name="button" class="newDir" 
+            hidden="hidden"  value=">>>"/>'."<br/>";
         }?>
     </p>
 </form>

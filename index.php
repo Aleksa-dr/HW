@@ -34,21 +34,24 @@ if (isset($_POST['value'])) {
                         . date("d F Y H:i:s.", filemtime($pathToFile));
                 }
             }
-
-            foreach ($listFiles as $key => $value){
+            $fileTree = $listFiles;
+            foreach ($fileTree as $key => $value){
                 $path = $filePath."/".$value;
+                $hidenBtn = "hidden";
                 if (filetype($path) == "dir"){
-                    $listFiles[$key] = $value."dir";//" <input type=\"submit\" name=\"button\" class=\"newDir\"
+                    $hidenBtn = "hidden";
+                    $fileTree[$key] = $value." dir";// <input type=\"submit\" name=\"button\" class=\"newDir\"
 //               value=\">>>\"/>";
                 }
 
             }
-            $fileTree = $listFiles;
             if ($typeButton == "<<<") {
                 $path_parts = pathinfo($filePath);
                 $filePath = $path_parts['dirname'];
             }
-
+            if ($typeButton == ">>>") {
+                echo "newwwww";
+            }
 
             closedir($handle);
         }
@@ -59,11 +62,3 @@ if (isset($_POST['value'])) {
         }
     }
 }
-
-//$path_parts = pathinfo('/home/aleksandr/Projects/school');
-////var_dump($path_parts);
-//echo $path_parts['dirname'],   "<br />";
-//echo $path_parts['basename'],  "<br />";
-//echo $path_parts['extension'], "<br />";
-//echo $path_parts['filename'],  "<br />";
-//echo $path_parts['filename'],  "<br />";
