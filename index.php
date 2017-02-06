@@ -40,8 +40,8 @@ if (isset($_POST['value'])) {
                 $hidenBtn = "hidden";
                 if (filetype($path) == "dir"){
                     $hidenBtn = "hidden";
-                    $fileTree[$key] = $value." dir";// <input type=\"submit\" name=\"button\" class=\"newDir\"
-//               value=\">>>\"/>";
+                    $fileTree[$key] = $value." <input type=\"submit\" name=\"button\" class=\"newDir\"
+               value=\">>>\"/>";
                 }
 
             }
