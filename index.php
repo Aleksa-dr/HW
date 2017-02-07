@@ -35,29 +35,37 @@ if (isset($_POST['value'])) {
                 }
             }
             $fileTree = $listFiles;
-            foreach ($fileTree as $key => $value){
-                $path = $filePath."/".$value;
-                $hidenBtn = "hidden";
-                if (filetype($path) == "dir"){
-                    $hidenBtn = "hidden";
-                    $fileTree[$key] = $value." <input type=\"submit\" name=\"button\" class=\"newDir\"
+            foreach ($fileTree as $key => $value) {
+                $path = $filePath . "/" . $value;
+//                $hidenBtn = "hidden";
+                if (filetype($path) == "dir") {
+//                    $hidenBtn = "hidden";
+                    $fileTree[$key] = $value . " <input type=\"submit\" name=\"button\" class=\"newDir\"
                value=\">>>\"/>";
+//                    if ($typeButton == ">>>") {
+//                        $filePath .= "/" . $value;
+//                    }
                 }
-
             }
             if ($typeButton == "<<<") {
                 $path_parts = pathinfo($filePath);
                 $filePath = $path_parts['dirname'];
             }
             if ($typeButton == ">>>") {
-                echo "newwwww";
+                foreach ($listFiles as $key => $value) {
+                    echo $value." ";
+                    $path = $filePath . "/" . $value;
+                    if (filetype($path) == "dir") {
+                        $filePath .= "/" . $value;
+                    }
+                }
             }
 
             closedir($handle);
         }
     } else {
         $errors[] = "Error 404. Directory not found";
-        if (isset($_POST['button']) && $_POST['button'] == "Информация о файле"){
+        if (isset($_POST['button']) && $_POST['button'] == "Информация о файле") {
             $errors[] = "File not found";
         }
     }
