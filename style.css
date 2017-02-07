@@ -1,0 +1,23 @@
+.path {
+    width: 350px;
+    height: 30px;
+    text-align: left;
+    font-size: inherit;
+}
+
+.btn {
+    width: 200px;
+    height: 25px;
+    text-align: center;
+}
+
+.list {
+    height: 25px;
+    text-align: center;
+}
+
+.btnInfo{
+    width: 150px;
+    height: 25px;
+    text-align: center;
+}
