@@ -1,0 +1,42 @@
+.b1 {
+    background: navy; /* Синий цвет фона */
+    color: white;
+    font-size: 9pt;
+}
+
+.width {
+    width: 270px;
+    height: 40px;
+    text-align: end;
+    font-size: larger;
+}
+
+.add {
+    width: 50px;
+    height: 50px;
+    background-color: gainsboro;
+    font-size: larger;
+}
+
+.C {
+    width: 50px;
+    height: 50px;
+    background-color: orangered;
+    font-size: larger;
+}
+
+.ravno {
+    width: 50px;
+    height: 50px;
+    background-color: lightsteelblue;
+    font-size: larger;
+}
+
+.Ans {
+    text-align: center;
+}
+
+h1 {
+    color: darkblue;
+    text-align: center;
+}
