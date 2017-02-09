@@ -2,6 +2,9 @@
 session_start();
 $errors = [];
 if (isset($_POST['button'])) {
+    if ($_POST['button'] == 'C') {
+        $_POST['value'] = 0;
+    }
     if (isset($_POST['value'])) {
         $value = trim($_POST['value']);
         if (!preg_match('/^(\-){0,1}[\d]+(\.){0,1}[\d]*$/', $value)) {
@@ -26,14 +29,17 @@ if (isset($_POST['button'])) {
                     $_COOKIE["Action"] = '+';
                     break;
                 case '-':
+                    setcookie("Action", $action);
                     $value = -$_COOKIE["Cookie"] - $value;
                     break;
                 case '*':
                     setcookie("Action", $action);
+                    $_COOKIE["Cookie"] += 1;
                     $value = $_COOKIE["Cookie"] * $value;
                     $_COOKIE["Action"] = '*';
                     break;
                 case '/':
+                    setcookie("Action", $action);
                     $value = $_COOKIE["Cookie"] / $value;
                     break;
                 case '=':
@@ -44,8 +50,13 @@ if (isset($_POST['button'])) {
                         case '*':
                             $value = $_COOKIE["Cookie"] * $value;
                             break;
+                        case '-':
+                            $value = -$_COOKIE["Cookie"] - $value;
+                            break;
+                        case '/':
+                            $value = -$_COOKIE["Cookie"] / $value;
+                            break;
                     }
-//                    $memo = '';
                     break;
                 case '+/-':
                     $value = -$value;
@@ -53,14 +64,6 @@ if (isset($_POST['button'])) {
                 default:
                     $value = intval($action);
             }
-            echo "value= " . $value . "<br/>";
-            $firstVal = $value;
-            echo "firstVal= " . $firstVal . "<br/>";
-            $_SESSION['button'] = $value;
-            echo "SESSION= " . $value . "<br/>";
-            $_COOKIE["Action"] = $action;
-            echo "COOKIE= " . $action . "<br/>";
-            echo "POST['value']= " . $value . "<br/>";
         }
     }
 } else {
