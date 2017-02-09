@@ -10,7 +10,7 @@
     <p align="center">
         <input type="text" name="value" size="20" class="width"
                value="<?php echo $value ?>"/></p>
-    <p class="Ans"><label>Memory = <?php echo $_POST['value'] ?></label></p>
+    <p class="Ans"><label>Memory = <?php echo $memo ?></label></p>
     <p align="center">
         <input type="submit" class="add" name="button" value="7"/>
         <input type="submit" class="add" name="button" value="8"/>
